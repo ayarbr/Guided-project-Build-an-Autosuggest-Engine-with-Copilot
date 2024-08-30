@@ -15,7 +15,7 @@
         Trie dictionary = InitializeTrie(words);
         
         // Uncomment the following lines to test individual features
-        //SearchWord(dictionary);
+        SearchWord(dictionary);
         //PrefixAutocomplete(dictionary);
         //DeleteWord(dictionary); // Note: This method is commented out because it’s incomplete in the provided code.
         //GetSpellingSuggestions(dictionary);
