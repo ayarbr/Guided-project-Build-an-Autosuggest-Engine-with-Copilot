@@ -1,39 +1,72 @@
 public class TrieNode
 {
+    // Dictionary to store the children nodes
     public Dictionary<char, TrieNode> Children { get; set; }
+    // Boolean to indicate if the node marks the end of a word
     public bool IsEndOfWord { get; set; }
 
+    // Character value of the node
     public char _value;
 
+    // Constructor to initialize a TrieNode
     public TrieNode(char value = ' ')
     {
+        // Initialize the children dictionary
         Children = new Dictionary<char, TrieNode>();
+        // Set the end of word flag to false
         IsEndOfWord = false;
+        // Set the character value
         _value = value;
     }
 
+    // Method to check if a node has a child with a specific character
     public bool HasChild(char c)
     {
+        // Return true if the children dictionary contains the character key
         return Children.ContainsKey(c);
     }
 }
 
 public class Trie
 {
+    // Root node of the Trie
     private TrieNode root;
 
+    // Constructor to initialize the Trie
     public Trie()
     {
+        // Initialize the root node with a space character
         root = new TrieNode();
     }
-
-    public bool Insert(string word)
+    // search for a word in the Trie
+    public bool Search(string word)
     {
+        // Start from the root node
         TrieNode current = root;
         // For each character in the word
         foreach (char c in word)
         {
-            // IF the character is not in the children of the current node
+            // If the character is not in the children of the current node, return false
+            if (!current.HasChild(c))
+            {
+                return false;
+            }
+            // Move to the next node
+            current = current.Children[c];
+        }
+        // Return true if the last node is marked as the end of a word, false otherwise
+        return current.IsEndOfWord;
+    }
+
+    // Method to insert a word into the Trie
+    public bool Insert(string word)
+    {
+        // Start from the root node
+        TrieNode current = root;
+        // For each character in the word
+        foreach (char c in word)
+        {
+            // If the character is not in the children of the current node
             if (!current.HasChild(c))
             {
                 // Add the character to the children of the current node
@@ -44,13 +77,16 @@ public class Trie
             current = current.Children[c];
         }
         // Mark the last node as the end of a word
+        // If the current node is already marked as the end of a word, return false
         if (current.IsEndOfWord)
         {
             return false;
         }
+        // Otherwise, mark it as the end of a word and return true
         current.IsEndOfWord = true;
         return true;
     }
+}
     
     // Returns a list of words that have the given prefix
     /// <summary>
@@ -58,7 +94,7 @@ public class Trie
     /// </summary>
     /// <param name="prefix">The prefix to search for.</param>
     /// <returns>A list of suggested words.</returns>
-    /// /// /// /// /// public List<string> AutoSuggest(string prefix)
+    public List<string> AutoSuggest(string prefix)
     {
         TrieNode currentNode = root;
         // Traverse the trie until the prefix is reached
@@ -77,9 +113,23 @@ public class Trie
     }
 
     // Returns a list of all words in the trie
-    public List<string> GetAllWords()
+    public List<string> GetAllWordsWithPrefix(TrieNode node, string prefix)
     {
-        return GetAllWordsWithPrefix(root, "");
+        List<string> words = new List<string>();
+        // If the current node marks the end of a word, add the prefix to the list
+        if (node.IsEndOfWord)
+        {
+            words.Add(prefix);
+        }
+        // Recursively get all words with the prefix
+        foreach (var child in node.Children)
+        {
+            words.AddRange(GetAllWordsWithPrefix(child.Value, prefix + child.Key));
+        }
+        return words;
+    }
+    {
+       
     }
 
     // Prints the structure of the trie

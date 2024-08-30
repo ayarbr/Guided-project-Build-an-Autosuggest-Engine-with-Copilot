@@ -9,7 +9,7 @@ string[] words = {
         "the", "their", "they", "there", "towards"};
 
 Trie dictionary = InitializeTrie(words);
-// SearchWord();
+ SearchWord();
 // PrefixAutocomplete();
 // DeleteWord();
 // GetSpellingSuggestions();
@@ -46,14 +46,14 @@ void SearchWord()
         {
             break;
         }
-        /*
+        
         // Check if the input is not null and the word exists in the Trie
         if (input != null && dictionary.Search(input))
         {
             // Inform the user that the word was found
             Console.WriteLine($"Found \"{input}\" in dictionary");
         }
-        */
+        
         else
         {
             // Inform the user that the word was not found
