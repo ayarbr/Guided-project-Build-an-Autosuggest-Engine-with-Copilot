@@ -91,6 +91,23 @@ public class Trie
         current.IsEndOfWord = true;
         return true;
     }
+
+    internal List<string> AutoSuggest(string prefix)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void Delete(string input)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal bool Search(string input)
+    {
+        throw new NotImplementedException();
+    }
+
+   
 }
 
     namespace TrieDictionary

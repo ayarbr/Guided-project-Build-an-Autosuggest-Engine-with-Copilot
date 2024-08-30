@@ -9,7 +9,7 @@ string[] words = {
         "the", "their", "they", "there", "towards"};
 
 Trie dictionary = InitializeTrie(words);
-//SearchWord();
+SearchWord();
 // PrefixAutocomplete();
 // DeleteWord();
 // GetSpellingSuggestions();
@@ -26,6 +26,7 @@ Trie InitializeTrie(string[] words)
         // Insert the word into the Trie
         trie.Insert(word);
     }
+
 
     // Return the initialized Trie
     return trie;
@@ -48,7 +49,7 @@ void SearchWord()
         }
         
         // Check if the input is not null and the word exists in the Trie
-      /*  if (input != null && dictionary.Search(input))
+        if (input != null && dictionary.Search(input))
         {
             // Inform the user that the word was found
             Console.WriteLine($"Found \"{input}\" in dictionary");
@@ -58,7 +59,7 @@ void SearchWord()
         {
             // Inform the user that the word was not found
             Console.WriteLine($"Did not find \"{input}\" in dictionary");
-        }*/
+        }
     }
 }
 
@@ -88,7 +89,7 @@ void DeleteWord()
         {
             break;
         }
-        /*
+        
         // Check if the input is not null and the word exists in the Trie
         if (input != null && dictionary.Search(input))
         {
@@ -99,7 +100,7 @@ void DeleteWord()
             // Print the updated Trie
             PrintTrie(dictionary);
         }
-        */
+        
         else
         {
             // Inform the user that the word was not found
@@ -204,7 +205,7 @@ void GetPrefixInput()
         {
             string previousWord = sb.ToString().Split(' ').Last();
 
-          /*  if (words != null) {
+            if (words != null) {
                 if (!previousWord.Equals(words[wordsIndex - 1]))
                 {
                     words = dictionary.AutoSuggest(prefix);
@@ -214,7 +215,7 @@ void GetPrefixInput()
             else {
                 words = dictionary.AutoSuggest(prefix);
                 wordsIndex = 0;
-            }*/
+            }
 
             for (int i = prefix.Length; i < previousWord.Length; i++)
             {
