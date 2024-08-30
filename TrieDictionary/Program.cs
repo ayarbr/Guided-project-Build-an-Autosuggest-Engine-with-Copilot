@@ -9,7 +9,7 @@ string[] words = {
         "the", "their", "they", "there", "towards"};
 
 Trie dictionary = InitializeTrie(words);
- //SearchWord();
+//SearchWord();
 // PrefixAutocomplete();
 // DeleteWord();
 // GetSpellingSuggestions();
@@ -48,7 +48,7 @@ void SearchWord()
         }
         
         // Check if the input is not null and the word exists in the Trie
-        if (input != null && dictionary.Search(input))
+      /*  if (input != null && dictionary.Search(input))
         {
             // Inform the user that the word was found
             Console.WriteLine($"Found \"{input}\" in dictionary");
@@ -58,7 +58,7 @@ void SearchWord()
         {
             // Inform the user that the word was not found
             Console.WriteLine($"Did not find \"{input}\" in dictionary");
-        }
+        }*/
     }
 }
 
@@ -121,11 +121,11 @@ void GetSpellingSuggestions()
     if (input != null)
     {
         // Get spelling suggestions from the Trie
-        var similarWords = dictionary.GetSpellingSuggestions(input);
+        //var similarWords = dictionary.GetSpellingSuggestions(input);
         // Print the spelling suggestions
         Console.WriteLine($"Spelling suggestions for \"{input}\":");
         // If no suggestions were found
-        if (similarWords.Count == 0)
+       /* if (similarWords.Count == 0)
         {
             Console.WriteLine("No suggestions found.");
         }
@@ -136,7 +136,7 @@ void GetSpellingSuggestions()
             {
                 Console.WriteLine(word);
             }
-        }
+        }*/
     }
 }
 
@@ -204,7 +204,7 @@ void GetPrefixInput()
         {
             string previousWord = sb.ToString().Split(' ').Last();
 
-            if (words != null) {
+          /*  if (words != null) {
                 if (!previousWord.Equals(words[wordsIndex - 1]))
                 {
                     words = dictionary.AutoSuggest(prefix);
@@ -214,7 +214,7 @@ void GetPrefixInput()
             else {
                 words = dictionary.AutoSuggest(prefix);
                 wordsIndex = 0;
-            }
+            }*/
 
             for (int i = prefix.Length; i < previousWord.Length; i++)
             {
@@ -251,7 +251,7 @@ void PrintTrie(Trie trie)
     // Inform the user about the contents of the Trie
     Console.WriteLine("The dictionary contains the following words:");
     // Get all words from the Trie
-    List<string> words = trie.GetAllWords();
+    //List<string> words = trie.GetAllWords();
     // Print each word
     foreach (string word in words)
     {
